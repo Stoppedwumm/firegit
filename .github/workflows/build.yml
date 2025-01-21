@@ -56,14 +56,20 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                   name: release_binbows
-                  path: release_binbows
+                  path: release_binbows.exe
+            - name: Create /release
+              run: mkdir release
+            - name: Move mac
+              run: mv release_osx release/
+            - name: Move binbows
+              run: mv release_binbows.exe release/
             - name: ls
               run: ls
-#            - name: Release
-#              uses: softprops/action-gh-release@v1
-#              env:
-#                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#              with:
-#                  files: "release_osx/**"
-#                  tag_name: ${{ github.event.inputs.version }}
-#                  name: ${{ github.event.inputs.version }}
+            - name: Release
+              uses: softprops/action-gh-release@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  files: "release/**"
+                  tag_name: ${{ github.event.inputs.version }}
+                  name: ${{ github.event.inputs.version }}
