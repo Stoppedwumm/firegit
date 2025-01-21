@@ -6,18 +6,18 @@ Store your code project in firestore
 
 ## Installation
 
-Clone the repo
-
-```bash
-git clone https://github.com/Stoppedwumm/firegit.git
-```
+Download the latest release
 
 ## Usage
 
 Run it with
 
 ```bash
-python3 firegit [download|upload]
+release_osx [download|upload]
+```
+or
+```cmd
+release_binbows.exe [download|upload]
 ```
 
 Note that you must have an `ServiceAccountKey.json` file in the code directory. You can obtain one in the firebase project settings under `Service Accounts`
@@ -25,13 +25,13 @@ Note that you must have an `ServiceAccountKey.json` file in the code directory. 
 
 ### Download from server
 ```bash
-python3 firegit download
+[executable] download
 ```
 
 ### Upload to server
 **WARNING: DELETES ANY FILES FROM THE SERVER THAT AREN'T ON THE CLIENT,** I recommend running Download and then making your changes.
 ```bash
-python3 firegit upload
+[executable] upload
 ```
 
 
