@@ -6,6 +6,12 @@ import os
 import sys
 from sys import exit
 
+if os.path.exists('./ServiceAccountKey.json') == False:
+    print("==============================================")
+    print("Missing ServiceAccountKey.json")
+    print("==============================================")
+    raise ValueError("Missing ServiceAccountKey.json")
+
 README = ["# Hello World", "## This is saved in firestore", "### get scammed google ahahahahaha", "If you see this, you initialized the database, and you can now edit the files in ./output.", "", "If this isn't your first time, the directory on firebase was empty"]
 
 # go through README and append an \n on each line
