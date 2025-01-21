@@ -10,6 +10,27 @@ app = firebase_admin.initialize_app(cred)
 
 store = firestore.client()
 doc_ref = store.collection(u'files')
+"""
+JS
+
+this.db.collection('users').doc('uid')
+  .get().limit(1).then(
+  doc => {
+    if (doc.exists) {
+      this.db.collection('users').doc('uid').collection('friendsSubcollection').get().
+        then(sub => {
+          if (sub.docs.length > 0) {
+            console.log('subcollection exists');
+          }
+        });
+    }
+  });
+"""
+try:
+    doc_ref.limit(1).get()
+except google.cloud.exceptions.NotFound:
+    print(u'Missing data')
+    store.document("files/welcome.md").set({'content': ['# Hello World']})
 
 def syncFromFirestore():
     try:
